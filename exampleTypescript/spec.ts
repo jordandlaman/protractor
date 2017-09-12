@@ -9,18 +9,18 @@ import {browser, element, by, By, $, $$, ExpectedConditions} from 'protractor';
 
 describe('protractor with typescript typings', () => {
   beforeEach(() => {
-    browser.get('http://www.angularjs.org');
+    browser.get('http://127.0.0.1:4200/auth');
   });
 
-  it('should greet the named user', () => {
-    element(by.model('yourName')).sendKeys('Julie');
-    let greeting = element(by.binding('yourName'));
-    expect(greeting.getText()).toEqual('Hello Julie!');
+  it('should have two buttons on the splash page', () => {
+    let signIn = element(by.css('.mat-raised-button.mat-primary'));
+    expect(signIn.getText()).toEqual('Sign in');
+    let createAccount = element(by.css('.mat-raised-button.mat-secondary'))
+    expect(createAccount.getText()).toEqual('Create Account');
   });
 
-  it('should list todos', function() {
-    let todoList = element.all(by.repeater('todo in todoList.todos'));
-    expect(todoList.count()).toEqual(2);
-    expect(todoList.get(1).getText()).toEqual('build an angular app');
+  it('have a title with text', () => {
+    let splashTitle = element(by.css('.splash-title'));
+    expect(splashTitle.getText()).toEqual('Welcome to Apps & Activities');
   });
 });

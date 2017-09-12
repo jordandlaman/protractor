@@ -13,7 +13,10 @@ import {Config} from 'protractor';
 export let config: Config = {
   framework: 'jasmine',
   capabilities: {
-    browserName: 'chrome'
+    browserName: 'chrome',
+    chromeOptions: {
+     args: [ "--headless", "--disable-gpu", "--window-size=800,600" ],
+   }
   },
   specs: [ 'spec.js' ],
   seleniumAddress: 'http://localhost:4444/wd/hub',
